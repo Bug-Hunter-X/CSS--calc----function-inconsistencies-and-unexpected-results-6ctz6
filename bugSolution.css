@@ -1,0 +1,14 @@
+To avoid unexpected behavior with CSS `calc()`, use consistent units in expressions.  If using percentages and lengths, consider converting all units to a common unit such as pixels (px).  Avoid overly complex calculations to reduce the chances of rounding errors or browser inconsistencies. 
+
+For example, instead of:
+```css
+width: calc(50% - 10px);
+```
+Consider defining the 10px as a percentage of the parent element's width, or pre-calculate a fixed pixel value based on common screen sizes and parent widths:
+```css
+width: calc(50% - 20px); /*Approximation of 10px as % of parent*/ 
+/* or */
+width: 480px; /*If 50% - 10px is roughly equal to 480px on target screen sizes*/
+```
+
+If dealing with `min-width` or `max-width`, it might be beneficial to handle sizing with media queries or using JavaScript for advanced calculations and responsiveness. For complex situations, simplify your calculations to avoid unintended consequences.
